@@ -43,7 +43,7 @@ drWho.prototype.getQuote = function(from, interface, params){
         if (err) {throw err}
 
         var $ = cheerio.load(html);
-        var quotes = $("dl").toArray();
+        var quotes = $('div > dl:not(:has(small, dl))').toArray();
         var quote = quotes[Math.floor(Math.random() * quotes.length)];
         var message = $(quote).text().trim();
 
